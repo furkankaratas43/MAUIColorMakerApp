@@ -3,39 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIColorMakerApp.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
-    </ScrollView>
-
+    <ContentPage.Resources>
+        <Color x:Key="Primary">#ab3527</Color>
+        <Color x:Key="Secondary">#775752</Color>
+        <Color x:Key="Tertiary">#705c2e</Color>
+       
+    </ContentPage.Resources>
+    <Grid x:Name="Container" BackgroundColor="Black">
+        <Frame Margin="15,0,15,0" VerticalOptions="Center">
+            <VerticalStackLayout Spacing="15" VerticalOptions="Center">
+                <Label FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" Text="Color Maker"/>
+                <Label Text="Kırmızı Değeri:" />
+                <Slider x:Name="sldRed" ThumbColor="#E64848" MaximumTrackColor="{StaticResource Tertiary}" MinimumTrackColor="{StaticResource Secondary}" ValueChanged="sldValueChanged" />
+                
+                <Label Text="Yeşil Değeri:" />
+                <Slider x:Name="sldGreen" ThumbColor="#7FB77E" MaximumTrackColor="{StaticResource Tertiary}" MinimumTrackColor="{StaticResource Secondary}" ValueChanged="sldValueChanged" />
+                 
+                <Label Text="Mavi Değeri:" />
+                <Slider x:Name="sldBlue" ThumbColor="#3AB4F2" MaximumTrackColor="{StaticResource Tertiary}" MinimumTrackColor="{StaticResource Secondary}" ValueChanged="sldValueChanged" />
+                <Frame CornerRadius="25" HorizontalOptions="Center">
+                    <HorizontalStackLayout>
+                        <Label x:Name="lblHex" HorizontalTextAlignment="End" Text="HEX Değeri: #000000" VerticalOptions="Center"/>
+                        <ImageButton Margin="10,0,0,0" HeightRequest="25" Source="copy.svg" VerticalOptions="Center" WidthRequest="25" x:Name="btnCopy" Clicked="btnCopy_Clicked"/>
+                    </HorizontalStackLayout>
+                </Frame>
+                <Button x:Name="btnRandom" BackgroundColor="{StaticResource Primary}" Text="Rastgele Renk Oluştur" Clicked="btnRandom_Clicked"/>
+            </VerticalStackLayout>
+            
+        </Frame>
+    </Grid>
 </ContentPage>
